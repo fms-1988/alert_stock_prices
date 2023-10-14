@@ -37,3 +37,43 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+        
+    - name: Run code1
+      run: python code1.py
+
+    - name: Check Git Status
+      run: |
+        git status
+
+    - name: List data directory
+      run: |
+        ls -al data/
+##43762575+fms-1988@users.noreply.github.com
+    - name: Configure Git
+      run: |
+        git config --local user.name "fms-1988"
+        git config --local user.email "43762575+fms-1988@users.noreply.github.com"
+
+    - name: Commit Changes
+      run: |
+        git add data/*
+        git commit -m "GH Action Autorun $(date)"
+
+    - name: Push Changes
+      run: git push origin main
+      env:
+        GITHUB_TOKEN: ${{secrets.SECRET_1}}#
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
