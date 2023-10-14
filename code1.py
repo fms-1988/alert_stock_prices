@@ -7,7 +7,7 @@ def get_last_price(ticker_symbol):
     return todays_data['Close'].iloc[0]
 
 tickers = ["AAPL", "MSFT"]
-target_prices = [150, 300]  # Example target prices for AAPL and MSFT
+target_prices = [2000, 2000]  # Example target prices for AAPL and MSFT
 
 # Store prices and check if any are below target
 prices_below_target = False
