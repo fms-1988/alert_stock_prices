@@ -1,1 +1,33 @@
+import yfinance as yf
+import os
 
+def get_last_price(ticker_symbol):
+    stock = yf.Ticker(ticker_symbol)
+    todays_data = stock.history(period="1d")
+    return todays_data['Close'].iloc[0]
+
+tickers = ["AAPL", "MSFT"]
+target_prices = [150, 300]  # Example target prices for AAPL and MSFT
+
+# Store prices and check if any are below target
+prices_below_target = False
+stock_data = []
+for ticker, target in zip(tickers, target_prices):
+    last_price = get_last_price(ticker)
+    stock_data.append((ticker, last_price))
+    if last_price < target:
+        prices_below_target = True
+
+# Save the stock data to alert.md if any price is below target
+if prices_below_target:
+    file_path = os.path.abspath("data/")
+    alert_file = os.path.join(file_path, "alert.md")
+    
+    with open(alert_file, 'w') as file:
+        # Write table headers
+        file.write("| Ticker | Last Price |\n")
+        file.write("|--------|------------|\n")
+        
+        # Write stock data
+        for data in stock_data:
+            file.write(f"| {data[0]} | ${data[1]:.2f} |\n")
