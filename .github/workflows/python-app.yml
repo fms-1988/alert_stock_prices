@@ -93,7 +93,7 @@ jobs:
           to: fms.morelli@gmail.com
           cc: morellicom2ls@gmail.com
           from: GitHub Campus Expert
-          html_body: file://data/alert.html
+          html_body: file://data/alert.md
           secure: true
           ignore_cert: true
           convert_markdown: true
