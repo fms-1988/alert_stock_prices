@@ -69,7 +69,7 @@ jobs:
           subject: 'Stock price (target)'
           to: fms.morelli@gmail.com
           from: BabySwimming WebScraper
-          html_body: file://alert.md
+          html_body: file://data/alert.md
           convert_markdown: true
 
       - name: Push Changes
