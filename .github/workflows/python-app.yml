@@ -69,19 +69,35 @@ jobs:
           fi
         id: auto-commit-action
 
-      - name: Send email
-        #if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      #- name: Send email
+      #  #if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      #  uses: dawidd6/action-send-mail@v3
+      #  with:
+      #    server_address: smtp.gmail.com
+      #    server_port: 465
+      #    username: ${{secrets.SECRET_EMAIL}}
+      #    password: ${{secrets.SECRET_EMAIL_PASSWORD}}
+      #    subject: 'Stock price (target)'
+      #    to: fms.morelli@gmail.com
+      #    from: me
+      #    html_body: file://data/alert.md
+      #    convert_markdown: true
+      - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{secrets.SECRET_EMAIL}}
-          password: ${{secrets.SECRET_EMAIL_PASSWORD}}
-          subject: 'Stock price (target)'
+          username: ${{SECRETS.SECRET_EMAIL}}
+          password: ${{SECRETS.SECRET_EMAIL_PASSWORD}}
+          subject: Opportunity for you
           to: fms.morelli@gmail.com
-          from: me
-          html_body: file://data/alert.md
+          cc: morellicom2ls@gmail.com
+          from: GitHub Campus Expert
+          html_body: file://data/alert.html
+          secure: true
+          ignore_cert: true
           convert_markdown: true
+          priority: low
 
       - name: Push Changes
         run: git push origin main
