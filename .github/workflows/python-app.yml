@@ -56,6 +56,21 @@ jobs:
         run: |
           git add data/*
           git commit -m "GH Action Autorun $(date)"
+        id: auto-commit-action
+
+      - name: Send email
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.secret_email}}
+          password: ${{secrets.secret_email_password}}
+          subject: 'Stock price (target)'
+          to: fms.morelli@gmail.com
+          from: BabySwimming WebScraper
+          html_body: file://alert.md
+          convert_markdown: true
 
       - name: Push Changes
         run: git push origin main
