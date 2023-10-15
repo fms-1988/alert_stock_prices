@@ -52,10 +52,21 @@ jobs:
           git config --local user.name "fms-1988"
           git config --local user.email "43762575+fms-1988@users.noreply.github.com"
 
+      #- name: Commit Changes
+      #  run: |
+      #    git add data/*
+      #    git commit -m "GH Action Autorun $(date)"
+      #  id: auto-commit-action
+
       - name: Commit Changes
         run: |
           git add data/*
-          git commit -m "GH Action Autorun $(date)"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          else
+            git commit -m "GH Action Autorun $(date)"
+          fi
         id: auto-commit-action
 
       - name: Send email
