@@ -75,11 +75,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{secrets.secret_email}}
-          password: ${{secrets.secret_email_password}}
+          username: ${{secrets.SECRET_EMAIL}}
+          password: ${{secrets.SECRET_EMAIL_PASSWORD}}
           subject: 'Stock price (target)'
           to: fms.morelli@gmail.com
-          from: BabySwimming WebScraper
+          from: me
           html_body: file://data/alert.md
           convert_markdown: true
 
