@@ -94,10 +94,10 @@ jobs:
           to: fms.morelli@gmail.com
           from: '"User" <alert@carbonprice.top>'
           html_body: file://data/alert.md
-          secure: true
-          ignore_cert: true
+          #secure: true
+          #ignore_cert: true
           convert_markdown: true
-          priority: low
+          #priority: low
 
       - name: Push Changes
         run: git push origin main
