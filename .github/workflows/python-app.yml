@@ -83,20 +83,21 @@ jobs:
       #    html_body: file://data/alert.md
       #    convert_markdown: true
       - name: Send mail
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: email-smtp.us-east-2.amazonaws.com
           server_port: 465
           username: ${{secrets.AWS_SES_SMTP_USER}}
           password: ${{secrets.AWS_SES_SMTP_PW}}
-          subject: Opportunity for you
+          subject: Stock Prices Alert
           to: fms.morelli@gmail.com
           from: '"User" <alert@carbonprice.top>'
           html_body: file://data/alert.md
-          secure: true
-          ignore_cert: true
+          #secure: true
+          #ignore_cert: true
           convert_markdown: true
-          priority: low
+          #priority: low
 
       - name: Push Changes
         run: git push origin main
