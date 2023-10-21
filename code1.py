@@ -31,3 +31,24 @@ if prices_below_target:
         # Write stock data
         for data in stock_data:
             file.write(f"| {data[0]} | ${data[1]:.2f} |\n")
+
+#send email using AWS SES SMTP
+
+import smtplib
+user = srt(user_)
+pw   = srt(pw_)
+host = 'email-smtp.us-east-2.amazonaws.com'
+port = 465
+me   = u'alert@carbonprice.top '
+you  = ('fms.morelli@gmail.com',)
+body = 'Test'
+msg  = ("From: %s\r\nTo: %s\r\n\r\n"
+       % (me, ", ".join(you)))
+
+msg = msg + body
+
+s = smtplib.SMTP_SSL(host, port, 'yourdomain')
+s.set_debuglevel(1)
+s.login(user, pw)
+
+s.sendmail(me, you, msg)
