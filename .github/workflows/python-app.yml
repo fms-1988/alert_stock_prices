@@ -91,7 +91,7 @@ jobs:
           password: ${{secrets.AWS_SES_SMTP_PW}}
           subject: Opportunity for you
           to: fms.morelli@gmail.com
-          from: alert@carbonprice.top
+          from: '"User" <alert@carbonprice.top>'
           html_body: file://data/alert.md
           secure: true
           ignore_cert: true
