@@ -87,8 +87,8 @@ jobs:
         with:
           server_address: email-smtp.us-east-2.amazonaws.com
           server_port: 465
-          username: ${{SECRETS.AWS_SES_SMTP_USER}}
-          password: ${{SECRETS.AWS_SES_SMTP_PW}}
+          username: ${{secrets.AWS_SES_SMTP_USER}}
+          password: ${{secrets.AWS_SES_SMTP_PW}}
           subject: Opportunity for you
           to: fms.morelli@gmail.com
           from: alert@carbonprice.top
