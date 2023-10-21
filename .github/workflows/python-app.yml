@@ -92,7 +92,8 @@ jobs:
           subject: Opportunity for you
           to: fms.morelli@gmail.com
           #cc: morellicom2ls@gmail.com
-          from: alert@carbonprice.top #GitHub Campus Expert
+          #from: alert@carbonprice.top 
+          from: GitHub Campus Expert
           html_body: file://data/alert.md
           secure: true
           ignore_cert: true
