@@ -32,8 +32,8 @@ if prices_below_target:
         for data in stock_data:
             file.write(f"| {data[0]} | ${data[1]:.2f} |\n")
 
-#send email using AWS SES SMTP
-
+'''
+#send email using AWS SES SMTP (this code works well)
 import smtplib
 user = srt(user_)
 pw   = srt(pw_)
@@ -50,5 +50,5 @@ msg = msg + body
 s = smtplib.SMTP_SSL(host, port, 'yourdomain')
 s.set_debuglevel(1)
 s.login(user, pw)
-
 s.sendmail(me, you, msg)
+'''
