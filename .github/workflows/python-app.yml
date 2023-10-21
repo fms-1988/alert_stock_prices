@@ -91,9 +91,7 @@ jobs:
           password: ${{SECRETS.AWS_SES_SMTP_PW}}
           subject: Opportunity for you
           to: fms.morelli@gmail.com
-          #cc: morellicom2ls@gmail.com
-          #from: alert@carbonprice.top 
-          from: GitHub Campus Expert
+          from: alert@carbonprice.top
           html_body: file://data/alert.md
           secure: true
           ignore_cert: true
