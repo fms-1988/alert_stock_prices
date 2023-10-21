@@ -85,14 +85,14 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
+          server_address: email-smtp.us-east-2.amazonaws.com
           server_port: 465
-          username: ${{SECRETS.SECRET_EMAIL}}
-          password: ${{SECRETS.SECRET_EMAIL_PASSWORD}}
+          username: ${{SECRETS.AWS_SES_SMTP_USER}}
+          password: ${{SECRETS.AWS_SES_SMTP_PW}}
           subject: Opportunity for you
           to: fms.morelli@gmail.com
-          cc: morellicom2ls@gmail.com
-          from: GitHub Campus Expert
+          #cc: morellicom2ls@gmail.com
+          from: alert@carbonprice.top #GitHub Campus Expert
           html_body: file://data/alert.md
           secure: true
           ignore_cert: true
