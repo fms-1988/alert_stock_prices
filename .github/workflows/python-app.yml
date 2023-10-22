@@ -58,20 +58,34 @@ jobs:
       #    git commit -m "GH Action Autorun $(date)"
       #  id: auto-commit-action
 
+#      - name: Commit Changes
+#        id: auto-commit-action
+#        run: |
+#          git add data/*
+#          if git diff --cached --quiet; then
+#            echo "No changes to commit"
+#            echo "::set-output name=changes_detected::false"
+#          else
+#            echo "::set-output name=changes_detected::true"
+#            git commit -m "GH Action Autorun $(date)"
+#          fi
+
       - name: Commit Changes
         id: auto-commit-action
         run: |
           git add data/*
           if git diff --cached --quiet; then
             echo "No changes to commit"
-            echo "::set-output name=changes_detected::false"
+            echo "false" > output.txt
           else
-            echo "::set-output name=changes_detected::true"
             git commit -m "GH Action Autorun $(date)"
+            echo "true" > output.txt
           fi
+          echo "changes_detected=$(cat output.txt)" >> $GITHUB_ENV
 
       - name: Send mail
-        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        #if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        if: env.changes_detected == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: email-smtp.us-east-2.amazonaws.com
