@@ -9,6 +9,7 @@ def get_last_price(ticker_symbol):
 tickers = ["AAPL", "MSFT"]
 target_prices = [2000, 2000]  # Example target prices for AAPL and MSFT
 
+
 # Store prices and check if any are below target
 prices_below_target = False
 stock_data = []
@@ -18,6 +19,29 @@ for ticker, target in zip(tickers, target_prices):
     if last_price < target:
         prices_below_target = True
 
+
+# Save the stock data to alert.html if any price is below target
+if prices_below_target:
+    file_path = os.path.abspath("data/")
+    alert_file = os.path.join(file_path, "alert.html")
+    
+    with open(alert_file, 'w') as file:
+        # Write beginning of HTML content and table headers
+        file.write("<html><head><style>table, th, td {border: 1px solid black; border-collapse: collapse;} th, td {padding: 10px;}</style></head><body>")
+        file.write("<table>")
+        file.write("<tr><th>Ticker</th><th>Last Price</th></tr>")
+        
+        # Write stock data
+        for data in stock_data:
+            # Check if the last price is less than the target price, if true set the background color to green
+            bgcolor = "background-color: green;" if data[1] < data[2] else ""
+            file.write(f"<tr><td>{data[0]}</td><td style='{bgcolor}'>${data[1]:.2f}</td></tr>")
+        
+        # End table and HTML content
+        file.write("</table></body></html>")
+
+
+'''
 # Save the stock data to alert.html if any price is below target
 if prices_below_target:
     file_path = os.path.abspath("data/")
@@ -35,6 +59,7 @@ if prices_below_target:
         
         # End table and HTML content
         file.write("</table></body></html>")
+'''
 
 '''
 # Save the stock data to alert.md if any price is below target
