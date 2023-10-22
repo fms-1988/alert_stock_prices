@@ -81,7 +81,7 @@ jobs:
           subject: Stock Prices Alert
           to: fms.morelli@gmail.com
           from: '"User" <alert@carbonprice.top>'
-          html_body: file://data/alert.md
+          html_body: file://data/alert.html
           secure: true
           ignore_cert: true
           convert_markdown: true
