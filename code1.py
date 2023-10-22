@@ -32,10 +32,13 @@ if prices_below_target:
         file.write("<tr><th>Ticker</th><th>Last Price</th></tr>")
         
         # Write stock data
-        for data in stock_data:
+        for ticker, last_price in stock_data:
+            # Get the target price for the current ticker
+            target = target_prices[tickers.index(ticker)]
+    
             # Check if the last price is less than the target price, if true set the background color to green
-            bgcolor = "background-color: green;" if data[1] < data[2] else ""
-            file.write(f"<tr><td>{data[0]}</td><td style='{bgcolor}'>${data[1]:.2f}</td></tr>")
+            bgcolor = "background-color: green;" if last_price < target else ""
+            file.write(f"<tr><td>{ticker}</td><td style='{bgcolor}'>${last_price:.2f}</td></tr>")
         
         # End table and HTML content
         file.write("</table></body></html>")
