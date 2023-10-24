@@ -1,4 +1,4 @@
-name: Webpage Scraper
+name: Alert stock prices
 #
 on:
   schedule:
