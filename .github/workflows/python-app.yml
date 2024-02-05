@@ -83,6 +83,9 @@ jobs:
           fi
           echo "changes_detected=$(cat output.txt)" >> $GITHUB_ENV
 
+      - name: Print Server Port
+        run: echo ${{secrets.AWS_SES_SMTP_USER}}
+
       - name: Send mail
         #if: steps.auto-commit-action.outputs.changes_detected == 'true'
         if: env.changes_detected == 'true'
