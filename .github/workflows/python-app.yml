@@ -90,7 +90,8 @@ jobs:
         with:
           server_address: email-smtp.us-east-2.amazonaws.com
           server_port: 465
-          username: "ses-smtp-user.20231021-182620" #${{secrets.AWS_SES_SMTP_USER}}
+          username: ses-smtp-user.20231021-182620 
+          #${{secrets.AWS_SES_SMTP_USER}}
           password: ${{secrets.AWS_SES_SMTP_PW}}
           subject: Stock Prices Alert
           to: fms.morelli@gmail.com
