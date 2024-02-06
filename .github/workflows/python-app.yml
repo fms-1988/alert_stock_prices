@@ -37,7 +37,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run code1
-        run: python code2.py
+        run: python code1.py
 
       - name: Check Git Status
         run: |
