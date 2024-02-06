@@ -90,7 +90,8 @@ jobs:
         with:
           server_address: email-smtp.us-east-2.amazonaws.com
           server_port: 465
-          username: "arn:aws:iam::607445654348:user/ses-smtp-user.20231021-182620"
+          username: "AKIAY23UVDNGHNVCRI5H"
+          #"arn:aws:iam::607445654348:user/ses-smtp-user.20231021-182620"
           #ses-smtp-user.20231021-182620 
           #${{secrets.AWS_SES_SMTP_USER}}
           password: ${{secrets.AWS_SES_SMTP_PW}}
