@@ -62,21 +62,5 @@ if prices_below_target:
 
 '''
 #send email using AWS SES SMTP (this code works well)
-import smtplib
-user = srt(user_)
-pw   = srt(pw_)
-host = 'email-smtp.us-east-2.amazonaws.com'
-port = 465
-me   = u'alert@carbonprice.top '
-you  = ('fms.morelli@gmail.com',)
-body = 'Test'
-msg  = ("From: %s\r\nTo: %s\r\n\r\n"
-       % (me, ", ".join(you)))
-
-msg = msg + body
-
-s = smtplib.SMTP_SSL(host, port, 'yourdomain')
-s.set_debuglevel(1)
-s.login(user, pw)
-s.sendmail(me, you, msg)
+#use boto3. understand using chatgpt
 '''
