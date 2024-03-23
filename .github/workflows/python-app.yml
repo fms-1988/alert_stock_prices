@@ -1,5 +1,5 @@
 name: Alert stock prices
-#
+##
 on:
   schedule:
     # Runs at 08:00, Monday through Friday. 
