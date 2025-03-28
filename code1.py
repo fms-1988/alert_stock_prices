@@ -6,8 +6,8 @@ def get_last_price(ticker_symbol):
     todays_data = stock.history(period="1d")
     return todays_data['Close'].iloc[0]
 
-tickers = ["CSMG3.SA","CMIG3.SA", "CMIG4.SA", "PETR3.SA", "USIM5.SA","IBM","THETA-USD"]
-target_prices = [15, 13,10, 25, 7, 130, 1]
+tickers = ["CSMG3.SA","CMIG3.SA", "CMIG4.SA", "PETR3.SA", "USIM5.SA","IBM","THETA-USD", "AMT"]
+target_prices = [15, 13,10, 25, 7, 130, 1, 100]
 
 
 # Store prices and check if any are below target
