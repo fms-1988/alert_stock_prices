@@ -1,5 +1,6 @@
 import yfinance as yf
 import os
+import time
 
 def get_last_price(ticker_symbol):
     stock = yf.Ticker(ticker_symbol)
@@ -15,6 +16,7 @@ prices_below_target = False
 stock_data = []
 for ticker, target in zip(tickers, target_prices):
     last_price = get_last_price(ticker)
+    time.sleep(2)  # wait 2 seconds between requests
     stock_data.append((ticker, last_price))
     if last_price < target:
         prices_below_target = True
