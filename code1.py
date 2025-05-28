@@ -1,12 +1,26 @@
 import yfinance as yf
 import os
 import time
-
+'''
 def get_last_price(ticker_symbol):
     stock = yf.Ticker(ticker_symbol)
     todays_data = stock.history(period="1d")
     return todays_data['Close'].iloc[0]
-
+'''
+def get_last_price(ticker_symbol, retries=3, delay=30):
+    for attempt in range(retries):
+        try:
+            stock = yf.Ticker(ticker_symbol)
+            todays_data = stock.history(period="1d")
+            return todays_data['Close'].iloc[0]
+        except yf.exceptions.YFRateLimitError as e:
+            print(f"Rate limit hit. Retry {attempt + 1}/{retries}")
+            time.sleep(delay)
+        except Exception as e:
+            print(f"Other error: {e}")
+            break
+    return None
+    
 tickers = ["ORVR3.SA","CMIG3.SA",  "USIM5.SA","IBM","THETA-USD", "AMT"]
 target_prices = [40,13, 7, 130, 1, 100]
 
