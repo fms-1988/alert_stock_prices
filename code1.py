@@ -21,8 +21,8 @@ def get_last_price(ticker_symbol, retries=3, delay=30):
             break
     return None
     
-tickers = ["ORVR3.SA","CMIG3.SA",  "USIM5.SA","IBM","THETA-USD", "AMT"]
-target_prices = [40,13, 7, 130, 1, 100]
+tickers = ["ALOS3F.SA","ORVR3.SA","CMIG3.SA",  "USIM5.SA","IBM","THETA-USD", "AMT"]
+target_prices = [20,40,13, 7, 130, 1, 100]
 
 
 # Store prices and check if any are below target
