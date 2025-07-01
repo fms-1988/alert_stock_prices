@@ -51,6 +51,10 @@ if prices_below_target:
         for ticker, last_price in stock_data:
             # Get the target price for the current ticker
             target = target_prices[tickers.index(ticker)]
+
+            # Skip if last_price is None or target is None
+            if last_price is None or target is None:
+                continue
     
             # Check if the last price is less than the target price, if true set the background color to green
             bgcolor = "background-color: lightgreen;" if last_price < target else ""
